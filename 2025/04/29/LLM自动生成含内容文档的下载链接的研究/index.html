@@ -13,7 +13,7 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://SunkInDream.github.io/2025/04/27/关于llm自动生成有内容文档的探究/"/>
+    <link rel="canonical" href="https://SunkInDream.github.io/2025/04/29/llm自动生成含内容文档的下载链接的研究/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
@@ -23,14 +23,14 @@
         
         <meta name="description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于LLM自动生成有内容文档的探究">
-<meta property="og:url" content="https://sunkindream.github.io/2025/04/27/%E5%85%B3%E4%BA%8ELLM%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%9C%89%E5%86%85%E5%AE%B9%E6%96%87%E6%A1%A3%E7%9A%84%E6%8E%A2%E7%A9%B6/index.html">
+<meta property="og:title" content="LLM自动生成含内容文档的下载链接的研究">
+<meta property="og:url" content="https://sunkindream.github.io/2025/04/29/LLM%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E5%90%AB%E5%86%85%E5%AE%B9%E6%96%87%E6%A1%A3%E7%9A%84%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5%E7%9A%84%E7%A0%94%E7%A9%B6/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://sunkindream.github.io/images/redefine-og.webp">
-<meta property="article:published_time" content="2025-04-27T12:22:48.000Z">
-<meta property="article:modified_time" content="2025-04-28T16:16:49.705Z">
+<meta property="article:published_time" content="2025-04-28T16:33:32.000Z">
+<meta property="article:modified_time" content="2025-04-28T16:34:26.625Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://sunkindream.github.io/images/redefine-og.webp">
@@ -45,7 +45,7 @@
     
     <title>
         
-            关于LLM自动生成有内容文档的探究 | My Blog
+            LLM自动生成含内容文档的下载链接的研究 | My Blog
         
     </title>
 
@@ -273,7 +273,7 @@
 		<div class="article-title relative w-full">
 			
 			<div class="w-full flex items-center pt-6 justify-start">
-				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">关于LLM自动生成有内容文档的探究</h1>
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">LLM自动生成含内容文档的下载链接的研究</h1>
 			</div>
 			
 		</div>
@@ -294,15 +294,15 @@
 					<div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2025-04-27 20:22:48</span>
-        <span class="mobile">2025-04-27 20:22:48</span>
+        <span class="desktop">2025-04-29 00:33:32</span>
+        <span class="mobile">2025-04-29 00:33:32</span>
         <span class="hover-info">Created</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-04-29 00:16:49</span>
-            <span class="mobile">2025-04-29 00:16:49</span>
+            <span class="desktop">2025-04-29 00:34:26</span>
+            <span class="mobile">2025-04-29 00:34:26</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -335,9 +335,14 @@
 <h4 id="生成可下载的链接"><a href="#生成可下载的链接" class="headerlink" title="生成可下载的链接"></a>生成可下载的链接</h4><p>最常见的自然是docx，但是我的项目要求解析Latex格式的公式，经过查询发现markdown支持Latex格式的解析，所以考虑生成markdown文件，python的flask架构有支持的库，相关代码如下：</p>
 <div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, jsonify, request, send_file, make_response</span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/api/generate_markdown&#x27;</span>, methods=[<span class="string">&#x27;GET&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">generate_markdown</span>():</span><br><span class="line">    <span class="comment"># 创建Markdown内容</span></span><br><span class="line">    markdown_content = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">                # 学习计划    </span></span><br><span class="line"><span class="string">                ## 今日任务</span></span><br><span class="line"><span class="string">                - 复习高数第三章</span></span><br><span class="line"><span class="string">                - 完成物理作业</span></span><br><span class="line"><span class="string">                - 阅读英语文章</span></span><br><span class="line"><span class="string">                    &quot;&quot;&quot;</span> </span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 创建响应</span></span><br><span class="line">    response = make_response(markdown_content)</span><br><span class="line">    response.headers[<span class="string">&quot;Content-Disposition&quot;</span>] = <span class="string">&quot;attachment; filename=study_plan.md&quot;</span></span><br><span class="line">    response.headers[<span class="string">&quot;Content-Type&quot;</span>] = <span class="string">&quot;text/markdown&quot;</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> response</span><br></pre></td></tr></table></figure></div>
 <p>下面是前端相关调用函数的代码（<em>react</em>）</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">const handleDownload = () =&gt; &#123;</span><br><span class="line">  fetch(&#x27;/api/generate_markdown&#x27;)</span><br><span class="line">    .then(response =&gt; &#123;</span><br><span class="line">      if (!response.ok) &#123;</span><br><span class="line">        throw new Error(`HTTP error! status: $&#123;response.status&#125;`);</span><br><span class="line">      &#125;</span><br><span class="line">      return response.blob();</span><br><span class="line">    &#125;)</span><br><span class="line">    .then(blob =&gt; &#123;</span><br><span class="line">      // 创建一个下载链接</span><br><span class="line">      const link = document.createElement(&#x27;a&#x27;);</span><br><span class="line">      link.href = URL.createObjectURL(blob);</span><br><span class="line">      link.download = &#x27;study_plan.md&#x27;;  // 设置下载文件的名称</span><br><span class="line">      document.body.appendChild(link);</span><br><span class="line">      link.click();</span><br><span class="line">      document.body.removeChild(link);</span><br><span class="line">    &#125;)</span><br><span class="line">    .catch(error =&gt; &#123;</span><br><span class="line">      console.error(&#x27;Error downloading file:&#x27;, error);</span><br><span class="line">      message.error(&#x27;下载文件失败，请稍后重试&#x27;);</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">handleDownload</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="title function_">fetch</span>(<span class="string">&#x27;/api/generate_markdown&#x27;</span>)</span><br><span class="line">    .<span class="title function_">then</span>(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (!response.<span class="property">ok</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">`HTTP error! status: <span class="subst">$&#123;response.status&#125;</span>`</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> response.<span class="title function_">blob</span>();</span><br><span class="line">    &#125;)</span><br><span class="line">    .<span class="title function_">then</span>(<span class="function"><span class="params">blob</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 创建一个下载链接</span></span><br><span class="line">      <span class="keyword">const</span> link = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;a&#x27;</span>);</span><br><span class="line">      link.<span class="property">href</span> = <span class="variable constant_">URL</span>.<span class="title function_">createObjectURL</span>(blob);</span><br><span class="line">      link.<span class="property">download</span> = <span class="string">&#x27;study_plan.md&#x27;</span>;  <span class="comment">// 设置下载文件的名称</span></span><br><span class="line">      <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(link);</span><br><span class="line">      link.<span class="title function_">click</span>();</span><br><span class="line">      <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">removeChild</span>(link);</span><br><span class="line">    &#125;)</span><br><span class="line">    .<span class="title function_">catch</span>(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&#x27;Error downloading file:&#x27;</span>, error);</span><br><span class="line">      message.<span class="title function_">error</span>(<span class="string">&#x27;下载文件失败，请稍后重试&#x27;</span>);</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure></div>
 <h4 id="LLM生成文档中内容"><a href="#LLM生成文档中内容" class="headerlink" title="LLM生成文档中内容"></a>LLM生成文档中内容</h4><p>这一部分没有操作难点，只需要调用api将返回的字符串传入generate_markdown（）中然后写进markdown_content就可以了</p>
-<h3 id="复盘问题"><a href="#复盘问题" class="headerlink" title="复盘问题"></a>复盘问题</h3><p>1、目前主流LLM能力还是有限，不能完成联动步骤过多的任务，但是很多需求只需要稍微一点简单的变通调整就可以很好地解决问题了<br>2、markdown格式还是很完善的，支持Latex代码编译<br>3、遇到相关问题可以去给软件官方发邮件，现在app公司的邮件回复系统还是挺及时完善的。<br>（下附与typora官方邮件交流截图）<br><a href="../images/1.png">image-1</a></p>
+<h3 id="复盘问题"><a href="#复盘问题" class="headerlink" title="复盘问题"></a>复盘问题</h3><p>1、目前主流LLM能力还是有限，不能完成联动步骤过多的任务，但是很多需求只需要稍微一点简单的变通调整就可以很好地解决问题了<br>2、markdown格式还是很完善的，支持Latex代码编译<br>3、遇到相关问题可以去给软件官方发邮件，现在app公司的邮件回复系统还是挺及时完善的。<br>（下附与typora官方邮件交流截图）<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/../images/1.png"
+                      alt="image-2"
+                ></p>
 
 		</div>
 
@@ -345,18 +350,18 @@
 		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
 			<div class="article-copyright-info-container">
     <ul>
-        <li><strong>Title:</strong> 关于LLM自动生成有内容文档的探究</li>
+        <li><strong>Title:</strong> LLM自动生成含内容文档的下载链接的研究</li>
         <li><strong>Author:</strong> gnahz</li>
         <li><strong>Created at
-                :</strong> 2025-04-27 20:22:48</li>
+                :</strong> 2025-04-29 00:33:32</li>
         
             <li>
                 <strong>Updated at
-                    :</strong> 2025-04-29 00:16:49
+                    :</strong> 2025-04-29 00:34:26
             </li>
         
         <li>
-            <strong>Link:</strong> https://redefine.ohevan.com/2025/04/27/关于LLM自动生成有内容文档的探究/
+            <strong>Link:</strong> https://redefine.ohevan.com/2025/04/29/LLM自动生成含内容文档的下载链接的研究/
         </li>
         <li>
             <strong>
@@ -449,7 +454,7 @@
 		<div class="post-toc-wrap">
 	<div class="post-toc">
 		<div class="toc-title">On this page</div>
-		<div class="page-title">关于LLM自动生成有内容文档的探究</div>
+		<div class="page-title">LLM自动生成含内容文档的下载链接的研究</div>
 		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8ELLM%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%9C%89%E5%86%85%E5%AE%B9%E6%96%87%E6%A1%A3%E7%9A%84%E6%8E%A2%E7%A9%B6"><span class="nav-text">关于LLM自动生成有内容文档的探究</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%91%E7%8E%B0%E9%97%AE%E9%A2%98"><span class="nav-text">发现问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98"><span class="nav-text">解决问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8D%E7%9B%98%E9%97%AE%E9%A2%98"><span class="nav-text">复盘问题</span></a></li></ol></li></ol>
 
 	</div>
